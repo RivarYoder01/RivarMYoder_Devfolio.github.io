@@ -1,16 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from 'axios'
 
-export const signup = createAsyncThunk('auth/signup', async({username, password}, {rejectWithValue}) => {
-    try {
-        const res = await axios.post('http://localhost:8080/signup', {username, password})
-        return res.data
-    } catch (err) {
-        console.log(err)
-        return rejectWithValue(err.response?.data ?? 'Signup Failed!')
-    }
-})
-
 export const signin = createAsyncThunk('auth/signin', async({username, password}, {rejectWithValue}) => {
     try {
         const res = await axios.post('http://localhost:8080/signin', {username, password})
@@ -32,7 +22,7 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        logout: (state, action) => {
+        logout: (state) => {
             state.user = ''
             state.isLoggedIn = false
             state.loading = false
@@ -41,30 +31,16 @@ export const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase (signup.fulfilled, (state, action) => {
+            .addCase(signin.fulfilled, (state, action) => {
                 state.user = action.payload.username
                 state.isLoggedIn = true
                 state.loading = false
                 state.error = null
             })
-            .addCase (signup.pending, (state, action) => {
+            .addCase(signin.pending, (state) => {
                 state.loading = true
             })
-            .addCase (signup.rejected, (state, action) => {
-                state.loading = false
-                state.isLoggedIn = false
-                state.error = action.payload
-            })
-            .addCase (signin.fulfilled, (state, action) => {
-                state.user = action.payload.username
-                state.isLoggedIn = true
-                state.loading = false
-                state.error = null
-            })
-            .addCase (signin.pending, (state, action) => {
-                state.loading = true
-            })
-            .addCase (signin.rejected, (state, action) => {
+            .addCase(signin.rejected, (state, action) => {
                 state.loading = false
                 state.isLoggedIn = false
                 state.error = action.payload

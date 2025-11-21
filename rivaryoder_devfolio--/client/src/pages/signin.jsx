@@ -1,6 +1,5 @@
 import { useState } from 'react'
-// import axios from 'axios';
-//import './App.css'
+import '../index.css'
 import { signin } from '../store/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
@@ -12,22 +11,13 @@ function Signin() {
     const error = useSelector((state) => state.auth?.error ?? false)
     const dispatch = useDispatch()
 
-    /*
-    const apiCall = () => {
-      axios.get('http://localhost:8080').then((data) => {
-        //this console.log will be in our frontend console
-        console.log(data)
-      })
-    }
-   */
     const submitHandler = e => {
         e.preventDefault()
-        //axios.post('http://localhost:8080/signup', {username: username, password: password})
         dispatch(signin({username, password}))
-            .then(() => {
-                setUsername('')
-                setPassword('')
-            })
+        .then(() => {
+            setUsername('')
+            setPassword('')
+        })
     }
 
     return (
