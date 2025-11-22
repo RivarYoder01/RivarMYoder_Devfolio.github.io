@@ -1,11 +1,11 @@
 export const projects = [
     {
-        title: "DevChat",
-        subtitle: "React and Firebase",
+        title: "HTML/CSS/JavaScript",
+        subtitle: "Chromatic Veil Tarot",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
-        image: "1",
-        link: "https://jsbootcamp.com",
+        image: "/CVT_screenshot.png",
+        link: "https://rivaryoder01.github.io/ChromaticVeilTarot.github.io/",
     },
     {
         title: "Epic Todo App",
