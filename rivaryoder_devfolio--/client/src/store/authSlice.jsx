@@ -1,6 +1,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from 'axios'
 
+export const pythonAdmin = createAsyncThunk('auth/pythonAdmin', async({title, subtitle, description, link, image, author}, {rejectWithValue}) => {
+    try {
+        const res = await axios.post('http://localhost:8080/pythonAdmin', {title, subtitle, description, link, image, author})
+        return res.data
+    } catch (err) {
+        return rejectWithValue((err.response?.data) ?? 'Upload Failed!')
+    }
+})
+
+
 export const signin = createAsyncThunk('auth/signin', async({username, password}, {rejectWithValue}) => {
     try {
         const res = await axios.post('http://localhost:8080/signin', {username, password})
@@ -31,6 +41,20 @@ export const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+            .addCase (pythonAdmin.fulfilled, (state, action) => {
+                state.user = action.payload.username
+                state.isLoggedIn = true
+                state.loading = false
+                state.error = null
+            })
+            .addCase (pythonAdmin.pending, (state) => {
+                state.loading = true
+            })
+            .addCase (pythonAdmin.rejected, (state, action) => {
+                state.loading = false
+                state.isLoggedIn = false
+                state.error = action.payload
+            })
             .addCase(signin.fulfilled, (state, action) => {
                 state.user = action.payload.username
                 state.isLoggedIn = true

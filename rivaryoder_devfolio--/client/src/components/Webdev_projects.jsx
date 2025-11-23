@@ -24,7 +24,7 @@ export default function Projects() {
                             <div className="flex relative">
                                 <img
                                     alt="gallery"
-                                    className="rounded-lg shadow-xl shadow-yellow-500/10 absolute inset-0 w-full h-full object-cover object-center"
+                                    className="rounded-lg border-4 border-emerald-900 absolute inset-0 w-full h-full object-cover object-center"
                                     src={project.image}
                                 />
                                 <div className="px-8 py-10 relative z-10 w-full border-4 rounded-lg bg-linear-to-t from-emerald-950 to-emerald-900 border-emerald-900 opacity-0 hover:opacity-100">

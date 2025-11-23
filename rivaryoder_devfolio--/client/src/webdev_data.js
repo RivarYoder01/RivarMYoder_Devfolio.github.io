@@ -1,7 +1,7 @@
 export const projects = [
     {
-        title: "HTML/CSS/JavaScript",
-        subtitle: "Chromatic Veil Tarot",
+        title: "Chromatic Veil Tarot",
+        subtitle: "HTML/CSS/JavaScript",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
         image: "/CVT_screenshot.png",
