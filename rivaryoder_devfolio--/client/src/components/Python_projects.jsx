@@ -1,7 +1,8 @@
 import React from "react";
-import { projects } from "../python_data.js";
+import { python_projects } from "../python_data.js";
 
 export default function Python_projects() {
+
     return (
         <section id="python_projects" className="text-gray-400 bg-black body-font">
             <div className="container px-5 py-10 mx-auto text-center lg:px-40">
@@ -16,7 +17,7 @@ export default function Python_projects() {
                     </p>
                 </div>
                 <div className="flex flex-wrap -m-4">
-                    {projects.map((project) => (
+                    {python_projects.map((project) => (
                         <a
                             href={project.link}
                             key={project.image}

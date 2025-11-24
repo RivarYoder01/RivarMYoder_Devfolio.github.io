@@ -4,7 +4,7 @@ export const projects = [
         subtitle: "HTML/CSS/JavaScript",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dolore rerum laborum iure enim sint nemo omnis voluptate exercitationem eius?",
-        image: "/CVT_screenshot.png",
+        image: "https://i.imgur.com/QDSsV43.png",
         link: "https://rivaryoder01.github.io/ChromaticVeilTarot.github.io/",
     },
     {

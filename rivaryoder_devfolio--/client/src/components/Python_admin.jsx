@@ -1,7 +1,18 @@
 // javascript
 import React, { useState } from 'react';
+import axios from "axios";
 
 export default function PythonAdminForm() {
+    async function updatePython() {
+        try {
+            const response = await axios.get('http://localhost:8080/update_python_projects');
+            const pythonDataArray = response.data;
+            console.log('Data loaded into array:', pythonDataArray);
+        } catch (error) {
+            console.error('Error fetching data with Axios:', error);
+        }
+    }
+
     const [form, setForm] = useState({
         title: '',
         subtitle: '',
@@ -49,6 +60,7 @@ export default function PythonAdminForm() {
                 const data = await res.json().catch(() => null);
                 console.log('Inserted:', data);
                 alert('Project added');
+                await updatePython();
                 setForm({ title: '', subtitle: '', description: '', link: '', image: '' });
             }
         } catch (err) {
