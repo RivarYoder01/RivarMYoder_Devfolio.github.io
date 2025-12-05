@@ -19,9 +19,9 @@ export default function Contact() {
                             <h2 className="title-font font-semibold text-yellow-500 tracking-widest text-xs">
                                 EMAIL
                             </h2>
-                            <a>
+                            <p>
                                 rivaryoder@gmail.com
-                            </a>
+                            </p>
                             <h2 className="title-font font-semibold text-yellow-500 tracking-widest text-xs mt-4">
                                 PHONE
                             </h2>

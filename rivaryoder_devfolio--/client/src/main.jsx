@@ -7,8 +7,6 @@ import Signin from './pages/signin.jsx';
 import Profile from './pages/profile.jsx';
 import RootLayout from './layouts/RootLayout.jsx';
 import Error from './pages/error.jsx';
-import './index.css'
-import './App.css'
 import App from './App.jsx'
 
 const router = createBrowserRouter(

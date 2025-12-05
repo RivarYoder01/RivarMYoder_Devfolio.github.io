@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 import axios from "axios";
 
-export default function PythonAdminForm() {
-    async function updatePython() {
+export default function WebdevAdminForm() {
+    async function updateWebdev() {
         try {
-            const response = await axios.get('http://localhost:8080/update_python_projects');
-            const pythonDataArray = response.data;
-            console.log('Project:', pythonDataArray);
+            const response = await axios.get('http://localhost:8080/update_webdev_projects');
+            const webdevDataArray = response.data;
+            console.log('Project:', webdevDataArray);
         } catch (error) {
             console.error('Error fetching data with Axios:', error);
         }
@@ -44,7 +44,7 @@ export default function PythonAdminForm() {
 
         setLoading(true);
         try {
-            const res = await fetch('http://localhost:8080/pythonAdmin', {
+            const res = await fetch('http://localhost:8080/webdevAdmin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -60,7 +60,7 @@ export default function PythonAdminForm() {
                 const data = await res.json().catch(() => null);
                 console.log('Inserted:', data);
                 alert('Project added');
-                await updatePython();
+                await updateWebdev();
                 setForm({ title: '', subtitle: '', description: '', link: '', image: '' });
             }
         } catch (err) {
@@ -76,29 +76,29 @@ export default function PythonAdminForm() {
             className="max-w-2xl mx-auto bg-emerald-950  rounded-lg p-6 m-5 mr-4 ml-4 transition delay-50 duration-300 ease-in-out hover:-translate-y-1 hover:scale-105"
             onSubmit={handleSubmit}
         >
-            <h2 className="text-2xl font-semibold text-yellow-500 mb-6">Add Python Project</h2>
+            <h2 className="text-2xl font-semibold text-yellow-500 mb-6">Add Webdev Project</h2>
 
             <div>
-                <label className="block text-sm font-medium text-white mb-1 mt-2">
-                    Project Title <span className="text-red-500">*</span>
+                <label className="block text-sm font-medium text-white mb-1">
+                    Website/App Title <span className="text-red-500">*</span>
                 </label>
                 <input
                     name="title"
                     value={form.title}
                     onChange={handleChange}
                     className="block w-full rounded-md border border-gray-300 bg-green-50 px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                    placeholder="Snake"
+                    placeholder="Project title"
                 />
             </div>
 
             <div>
-                <label className="block text-sm font-medium text-white mb-1 mt-2">Language and Libraries</label>
+                <label className="block text-sm font-medium text-white mb-1 mt-2">Languages or Platform</label>
                 <input
                     name="subtitle"
                     value={form.subtitle}
                     onChange={handleChange}
                     className="block w-full rounded-md border border-gray-300 bg-green-50 px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                    placeholder="Python, PyGame, Tkinter, BeautifulSoup, ect"
+                    placeholder="HTML, CSS, JavaScript, Figma, Wordpress Avada, ect."
                 />
             </div>
 
@@ -110,7 +110,7 @@ export default function PythonAdminForm() {
                     onChange={handleChange}
                     rows="4"
                     className="block w-full rounded-md border border-gray-300 bg-green-50 px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 resize-y"
-                    placeholder="Super duper cool project"
+                    placeholder="Super snazy tazy project"
                 />
             </div>
 

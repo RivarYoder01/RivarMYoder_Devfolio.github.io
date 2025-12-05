@@ -1,6 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from 'axios'
 
+export const python_delete = createAsyncThunk('auth/pythonAdmin', async({title, subtitle, description, link, image, author}, {rejectWithValue}) => {
+    try {
+        const res = await axios.post('http://localhost:8080/pythonAdmin', {title, subtitle, description, link, image, author})
+        return res.data
+    } catch (err) {
+        return rejectWithValue((err.response?.data) ?? 'Upload Failed!')
+    }
+})
+
 export const pythonAdmin = createAsyncThunk('auth/pythonAdmin', async({title, subtitle, description, link, image, author}, {rejectWithValue}) => {
     try {
         const res = await axios.post('http://localhost:8080/pythonAdmin', {title, subtitle, description, link, image, author})
